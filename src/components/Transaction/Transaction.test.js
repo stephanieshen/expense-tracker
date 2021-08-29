@@ -1,0 +1,27 @@
+import { render, screen } from '@testing-library/react';
+import Transaction from './Transaction';
+
+test('display Add Expense form and submit button should be disabled by default', () => {
+  render(<Transaction />);
+
+  const addExpenseTitle = screen.getByRole('heading', { name: /add expense/i });
+  expect(addExpenseTitle).toBeInTheDocument();
+
+  const expenseTitle = screen.getByPlaceholderText(/title/i);
+  expect(expenseTitle).toBeInTheDocument();
+
+  const expenseCategory = screen.getByPlaceholderText(/category/i);
+  expect(expenseCategory).toBeInTheDocument();
+
+  const expenseAmount = screen.getByPlaceholderText(/amount/i);
+  expect(expenseAmount).toBeInTheDocument();
+
+  const expenseDate = screen.getByPlaceholderText(/date/i);
+  expect(expenseDate).toBeInTheDocument();
+
+  const addExpenseButton = screen.getByRole('button', { name: /add expense/i });
+  expect(addExpenseButton).toBeInTheDocument();
+  expect(addExpenseButton).not.toBeEnabled();
+});
+
+
