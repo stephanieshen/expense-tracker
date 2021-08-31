@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import Transaction from './Transaction';
 
-test('display Add Expense form and submit button should be disabled by default', () => {
+test('render form without crashing', () => {
   render(<Transaction />);
 
   const addExpenseTitle = screen.getByRole('heading', { name: /add expense/i });
