@@ -6,10 +6,10 @@ export const handlers = [
       ctx.status(200),
       ctx.json({
         id: '123',
-        title: 'Expense 1',
+        title: 'Chatime',
         category: 'Food',
         amount: '300.00',
-        date: '08-31-2021'
+        date: '31/08/2021'
       })
     )
   })
