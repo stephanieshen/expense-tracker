@@ -1,5 +1,5 @@
-import firebase from 'firebase/app'
-import 'firebase/storage'
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/storage'
 
 const firebaseConfig = {
   apiKey: "AIzaSyDrH6ijNW6CCXNySDOyeVZ2bUbhID9LrPE",
@@ -16,6 +16,6 @@ firebase.initializeApp(firebaseConfig);
 
 const storage = firebase.storage();
 
-export const endpoint = 'https://expense-tracker-e01d8-default-rtdb.asia-southeast1.firebasedatabase.app';
+export const endpoint = 'https://expense-tracker-e01d8-default-rtdb.asia-southeast1.firebasedatabase.app/';
 
 export default storage;

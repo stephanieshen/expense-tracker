@@ -1,10 +1,26 @@
 import { useState } from 'react';
 import { ReactElement } from 'react';
+import { useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { addExpense } from '../../store/Transaction/transaction-action';
+
+interface ExpenseForm {
+  title: string | null;
+  category: string | null;
+  amount: number;
+  date: string | null;
+}
 
 const Transaction = (): ReactElement => {
+  const dispatch = useDispatch();
   const [validated, setValidated] = useState<boolean>(false);
+  const [formValues, setFormValues] = useState<ExpenseForm>({
+    title: null,
+    category: 'food',
+    amount: 0,
+    date: null
+  });
 
   const handleSubmit = (event: any): void => {
     const form = event.currentTarget;
@@ -15,17 +31,40 @@ const Transaction = (): ReactElement => {
     }
 
     setValidated(true);
+    dispatch(addExpense(formValues));
+  }
+
+  const handleChange = (
+    value: string | number,
+    key: string
+  ): void => {
+    setFormValues({
+      ...formValues,
+      [key]: value
+    })
   }
 
   return (
     <div>
       <h3>Add Expense</h3>
-      <Form onSubmit={handleSubmit} validated={validated} noValidate>
+      <Form validated={validated} noValidate>
         <Form.Group>
-          <Form.Label>Title</Form.Label>
-          <Form.Control type="text" placeholder="Title" required />
+          <Form.Label>
+            Title
+          </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Title"
+            onChange={(e) => handleChange(e.target.value, 'title')}
+            required 
+          />
         </Form.Group>
-        <Form.Control as="select" placeholder="Category" required>
+        <Form.Control
+          as="select"
+          placeholder="Category"
+          onChange={(e) => handleChange(e.target.value, 'category')}
+          required
+        >
           <option value="food">Food</option>
           <option value="utility bill">Utility Bill</option>
           <option value="subscription">Subscription</option>
@@ -33,15 +72,29 @@ const Transaction = (): ReactElement => {
           <option value="Other">Other</option>
         </Form.Control>
         <Form.Group>
-          <Form.Label>Amount</Form.Label>
-          <Form.Control type="number" placeholder="Amount" required />
+          <Form.Label>
+            Amount
+          </Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="Amount"
+            onChange={(e) => handleChange(e.target.value, 'amount')}
+            required
+          />
         </Form.Group>
         <Form.Group>
-          <Form.Label>Date</Form.Label>
-          <Form.Control type="date" placeholder="Date" required />
+          <Form.Label>
+            Date
+          </Form.Label>
+          <Form.Control
+            type="date"
+            placeholder="Date"
+            onChange={(e) => handleChange(e.target.value, 'date')}
+            required
+          />
         </Form.Group>
 
-        <Button type="submit">
+        <Button type="button" onClick={handleSubmit}>
           Add Expense
         </Button>
       </Form>
