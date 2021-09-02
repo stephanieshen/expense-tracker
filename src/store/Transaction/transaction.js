@@ -9,7 +9,6 @@ const transactionSlice = createSlice({
 	initialState: transactionsState,
 	reducers: {
 		addExpense(state, action) {
-			console.log(action.payload);
 			state.expenses.push(action.payload);
 		}
 	}
