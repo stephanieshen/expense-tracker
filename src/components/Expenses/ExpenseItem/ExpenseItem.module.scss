@@ -3,17 +3,22 @@
   padding: 1em;
   display: flex;
   align-items: center;
+  border-radius: 8px;
 
   &:not(:last-of-type) {
     margin-bottom: .8em;
   }
 }
 
-.expenseTitle {
+.title {
   margin: 0;
 }
 
-.expenseAmount {
+.amount {
+  margin: 0;
+}
+
+.category {
   margin: 0;
 }
 
@@ -21,5 +26,14 @@
   background: #2A5584;
   color: #fff;
   border-radius: 8px;
-  padding: 1.2em 1.3em;
+  width: 3em;
+  height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info {
+  width: 70%;
+  padding: 0 1.4em;
 }

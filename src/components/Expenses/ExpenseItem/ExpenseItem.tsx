@@ -12,15 +12,15 @@ const ExpenseItem = ({ expense } : ExpenseItemProps) => {
         <div data-testid="expense-icon" className={styles.iconWrapper}>
           <CategoryIcon category={expense.category} />
         </div>
-        <div>
-          <h5 className={styles.expenseTitle}>
+        <div className={styles.info}>
+          <h5 className={styles.title}>
             {expense.title}
           </h5>
-          <p>
+          <p className={styles.category}>
             {expense.category}
           </p>
         </div>
-        <p className={styles.expenseAmount}>
+        <p className={styles.amount}>
           Php {expense.amount}
         </p>
       </div>
