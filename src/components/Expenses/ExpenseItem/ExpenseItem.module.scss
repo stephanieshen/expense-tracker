@@ -1,0 +1,25 @@
+.expenseItem {
+  background-color: #E7E7E7;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+
+  &:not(:last-of-type) {
+    margin-bottom: .8em;
+  }
+}
+
+.expenseTitle {
+  margin: 0;
+}
+
+.expenseAmount {
+  margin: 0;
+}
+
+.categoryIcon {
+  background: #2A5584;
+  color: #fff;
+  border-radius: 8px;
+  padding: 1.3em;
+}

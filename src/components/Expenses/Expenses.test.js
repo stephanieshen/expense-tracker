@@ -7,6 +7,9 @@ test('render each expense item without crashing', async () => {
   const title = screen.getByRole('heading', { name: /all expenses/i });
   expect(title).toBeInTheDocument();
 
+  const loading = screen.getByTestId('loading-wrapper');
+  expect(loading).toBeInTheDocument();
+
   await waitFor(async () => {
     const expenses = await screen.findAllByTestId('expense-item');
     const icon = await screen.findAllByTestId('expense-icon');
@@ -17,6 +20,9 @@ test('render each expense item without crashing', async () => {
       expect(expense).toContainElement(icon[index])
       expect(title[index]).toBeInTheDocument()
       expect(price[index]).toBeInTheDocument()
-    })
+    });
   });
+
+  const loaded = screen.queryByTestId('loading-wrapper');
+  expect(loaded).not.toBeInTheDocument();
 });

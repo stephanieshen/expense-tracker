@@ -1,16 +1,29 @@
-const ExpenseItem = () => {
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Expense } from "../../../models/expense.model";
+import styles from './ExpenseItem.module.scss';
+interface ExpenseItemProps {
+  expense: Expense
+}
+
+const ExpenseItem = ({ expense } : ExpenseItemProps) => {
   return (
     <>
-      <div data-testid="expense-item">
-        <div data-testid="expense-icon"></div>
-        <h5>Item 1</h5>
-        <p>Php 100.00</p>
-      </div>
-
-      <div data-testid="expense-item">
-        <div data-testid="expense-icon"></div>
-        <h5>Item 2</h5>
-        <p>PHp 100.00</p>
+      <div data-testid="expense-item" className={styles.expenseItem}>
+        <div data-testid="expense-icon" className={styles.categoryIcon}>
+          <FontAwesomeIcon icon={faCoffee} />
+        </div>
+        <div>
+          <h5 className={styles.expenseTitle}>
+            {expense.title}
+          </h5>
+          <p>
+            {expense.category}
+          </p>
+        </div>
+        <p className={styles.expenseAmount}>
+          Php {expense.amount}
+        </p>
       </div>
     </>
   )

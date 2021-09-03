@@ -4,13 +4,7 @@ import { useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { addExpense } from '../../store/Transaction/transaction-action';
-
-interface ExpenseForm {
-  title: string | null;
-  category: string | null;
-  amount: number;
-  date: string | null;
-}
+import { ExpenseForm } from '../../models/expense.model';
 
 const Transaction = (): ReactElement => {
   const dispatch = useDispatch();
