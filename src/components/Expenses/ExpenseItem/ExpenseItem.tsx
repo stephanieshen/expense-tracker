@@ -1,6 +1,5 @@
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Expense } from "../../../models/expense.model";
+import CategoryIcon from "../../CategoryIcon/CategoryIcon";
 import styles from './ExpenseItem.module.scss';
 interface ExpenseItemProps {
   expense: Expense
@@ -10,8 +9,8 @@ const ExpenseItem = ({ expense } : ExpenseItemProps) => {
   return (
     <>
       <div data-testid="expense-item" className={styles.expenseItem}>
-        <div data-testid="expense-icon" className={styles.categoryIcon}>
-          <FontAwesomeIcon icon={faCoffee} />
+        <div data-testid="expense-icon" className={styles.iconWrapper}>
+          <CategoryIcon category={expense.category} />
         </div>
         <div>
           <h5 className={styles.expenseTitle}>
