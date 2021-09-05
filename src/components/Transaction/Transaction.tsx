@@ -3,8 +3,12 @@ import { ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { addExpense } from '../../store/Transaction/transaction-action';
 import { ExpenseForm } from '../../models/expense.model';
+import styles from './Transaction.module.scss';
 
 const Transaction = (): ReactElement => {
   const dispatch = useDispatch();
@@ -42,30 +46,45 @@ const Transaction = (): ReactElement => {
     <div>
       <h4>Add Expense</h4>
       <Form validated={validated} noValidate>
-        <Form.Group>
-          <Form.Label>
-            Title
-          </Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Title"
-            onChange={(e) => handleChange(e.target.value, 'title')}
-            required 
-          />
-        </Form.Group>
-        <Form.Control
-          as="select"
-          placeholder="Category"
-          onChange={(e) => handleChange(e.target.value, 'category')}
-          required
-        >
-          <option value="food">Food</option>
-          <option value="utility bill">Utility Bill</option>
-          <option value="subscription">Subscription</option>
-          <option value="transportation">Transportation</option>
-          <option value="Other">Other</option>
-        </Form.Control>
-        <Form.Group>
+        <Container className={styles.row}>
+          <Row>
+            <Col className={styles.col}>
+              <Form.Group>
+                <Form.Label>
+                  Title
+                </Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Title"
+                  onChange={(e) => handleChange(e.target.value, 'title')}
+                  className="et-input"
+                  required 
+                />
+              </Form.Group>
+            </Col>
+            <Col className={styles.col}>
+              <Form.Group>
+                <Form.Label>
+                  Category
+                </Form.Label>
+                <Form.Control
+                  as="select"
+                  placeholder="Category"
+                  onChange={(e) => handleChange(e.target.value, 'category')}
+                  className="et-input"
+                  required
+                >
+                  <option value="food">Food</option>
+                  <option value="utility bill">Utility Bill</option>
+                  <option value="subscription">Subscription</option>
+                  <option value="transportation">Transportation</option>
+                  <option value="Other">Other</option>
+                </Form.Control>
+              </Form.Group>
+            </Col>
+          </Row>
+        </Container>
+        <Form.Group className={styles.row}>
           <Form.Label>
             Amount
           </Form.Label>
@@ -73,10 +92,11 @@ const Transaction = (): ReactElement => {
             type="number"
             placeholder="Amount"
             onChange={(e) => handleChange(e.target.value, 'amount')}
+            className="et-input"
             required
           />
         </Form.Group>
-        <Form.Group>
+        <Form.Group className={styles.row}>
           <Form.Label>
             Date
           </Form.Label>
@@ -84,13 +104,16 @@ const Transaction = (): ReactElement => {
             type="date"
             placeholder="Date"
             onChange={(e) => handleChange(e.target.value, 'date')}
+            className="et-input"
             required
           />
         </Form.Group>
 
-        <Button type="button" onClick={handleSubmit}>
-          Add Expense
-        </Button>
+        <div className={styles.buttonWrapper}>
+          <Button type="button" className="et-btn" onClick={handleSubmit}>
+            Add Expense
+          </Button>
+        </div>
       </Form>
     </div>
   )

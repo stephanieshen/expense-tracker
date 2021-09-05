@@ -9,7 +9,7 @@ html {
 body {
   margin: 0;
   padding: 1em;
-  background-color: #f3f3f3;
+  background-color: #f1f1f1;
 
   @include respond-above(md) {
     padding: 1.5em 10em;
