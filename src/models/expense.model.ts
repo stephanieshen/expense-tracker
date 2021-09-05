@@ -5,10 +5,3 @@ export interface Expense {
   amount: number;
   date: string | null;
 }
-
-export interface ExpenseForm {
-  title: string | null;
-  category: string | null;
-  amount: number;
-  date: string | null;
-}

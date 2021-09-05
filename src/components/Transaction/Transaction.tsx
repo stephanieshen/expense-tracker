@@ -7,28 +7,33 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { addExpense } from '../../store/Transaction/transaction-action';
-import { ExpenseForm } from '../../models/expense.model';
 import styles from './Transaction.module.scss';
 
 const Transaction = (): ReactElement => {
   const dispatch = useDispatch();
   const [validated, setValidated] = useState<boolean>(false);
-  const [formValues, setFormValues] = useState<ExpenseForm>({
+  const [formValues, setFormValues] = useState<any>({
     title: null,
     category: 'food',
     amount: 0,
     date: null
   });
 
-  const handleSubmit = (event: any): void => {
-    const form = event.currentTarget;
+  const isFormValid = (): boolean => {
+    const invalidItems = Object.keys(formValues).filter((key: string) => (
+      formValues[key] === null || formValues[key] === '' || formValues[key] === 0
+    ));
+    return invalidItems.length <= 0;
+  }
 
-    if (form.checkValidity() === false) {
+  const handleSubmit = (event: any): void => {
+    if (!isFormValid()) {
+      setValidated(true);
       event.preventDefault();
       event.stopPropagation();
+      return;
     }
 
-    setValidated(true);
     dispatch(addExpense(formValues));
   }
 
