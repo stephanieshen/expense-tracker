@@ -1,0 +1,40 @@
+@import '../../assets/scss/config.scss';
+
+.amount {
+  margin: 0;
+}
+
+.card {
+  background-color: #2A5584;
+  color: #fff;
+  padding: 1.5em 1em;
+  border-radius: 8px;
+
+  @include respond-above(md) {
+    padding: 2em;
+  }
+}
+
+.col {
+  &:first-of-type {
+    padding-left: 0;
+  }
+
+  &:last-of-type {
+    padding-right: 0;
+  }
+}
+
+.income {
+  margin-bottom: 1.5em;
+}
+
+.label {
+  margin: 0 0 3px;
+  color: #AAA9A9;
+  font-size: 1.2em;
+}
+
+.white {
+  color: #fff;
+}
