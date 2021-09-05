@@ -1,0 +1,29 @@
+/*
+* RESET RULES
+*/
+
+html {
+	box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1em;
+
+  @include respond-above(md) {
+    padding: 0 10em;
+  }
+
+  @include respond-above(lg) {
+    padding: 0 25em;
+  }
+}
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+  font-family: 'RopaSans', sans-serif;
+}
