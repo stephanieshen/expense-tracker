@@ -15,7 +15,7 @@ const Expenses = () => {
   
   return (
     <div>
-      <h3>All Expenses</h3>
+      <h4>All Expenses</h4>
       {transaction.isLoading ? (
         <div data-testid="loading-wrapper">
           <Skeleton

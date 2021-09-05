@@ -40,7 +40,7 @@ const Transaction = (): ReactElement => {
 
   return (
     <div>
-      <h3>Add Expense</h3>
+      <h4>Add Expense</h4>
       <Form validated={validated} noValidate>
         <Form.Group>
           <Form.Label>
