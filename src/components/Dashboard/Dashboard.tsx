@@ -7,7 +7,6 @@ import { formatCurrency } from '../../services';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
-import { Form, Modal } from 'react-bootstrap';
 import AddIncome from '../AddIncome/AddIncome';
 import { updateIncome } from '../../store/Transaction/transaction-action';
 
@@ -74,7 +73,7 @@ const Dashboard = () => {
               <h2 className={styles.amount}>
                 Php &nbsp;
                 <span data-testid="balance">
-                  {formatCurrency(0)}
+                  {formatCurrency(transaction.income - transaction.totalExpenses)}
                 </span>
               </h2>
             </div>
