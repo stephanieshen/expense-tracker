@@ -1,5 +1,17 @@
 @import '../../assets/scss/config.scss';
 
+.addIcon {
+  background-color: transparent !important;
+  color: #b2b2b2 !important;
+  padding: 5px !important;
+  font-size: .7em;
+  margin-left: 1em;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
 .amount {
   margin: 0;
 }

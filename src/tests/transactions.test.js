@@ -22,6 +22,4 @@ test('adding of expense', () => {
 
   const addExpenseButton = screen.getByRole('button', { name: /add expense/i });
   userEvent.click(addExpenseButton);
-
-  // expect(expenseTotal).toHaveTextContent('300.00');
 });

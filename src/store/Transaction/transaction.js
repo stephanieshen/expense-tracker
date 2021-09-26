@@ -9,6 +9,7 @@ const getTotalExpenses = (expenses) => {
 
 const transactionsState = {
 	isLoading: true,
+	income: 0,
   expenses: [],
 	totalExpenses: 0
 }
@@ -19,6 +20,9 @@ const transactionSlice = createSlice({
 	reducers: {
 		setIsLoading(state, action) {
 			state.isLoading = action.payload;
+		},
+		setIncome(state, action) {
+			state.income = action.payload
 		},
 		setExpenses(state, action) {
 			state.expenses = action.payload;

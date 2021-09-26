@@ -18,3 +18,22 @@ export const fetchExpenses = async () => {
     }
   );
 }
+
+export const fetchIncome = async () => {
+  return await fetch(
+    endpoint + 'income.json',
+    {
+      method: 'GET'
+    }
+  );
+}
+
+export const putIncome = async (income) => {
+  return await fetch(
+    endpoint + 'income.json',
+    {
+      method: 'PUT',
+      body: JSON.stringify(income)
+    }
+  );
+}

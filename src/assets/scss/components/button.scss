@@ -8,4 +8,12 @@
   &:hover {
     background: #2A5584;
   }
+
+  &--danger {
+    background: #ec3a3a;
+
+    &:hover {
+      background: #ec3a3a;
+    }
+  }
 } 

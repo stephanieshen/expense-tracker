@@ -1,4 +1,4 @@
-import { fetchExpenses, postExpense } from "../../data-services";
+import { fetchExpenses, postExpense, fetchIncome, putIncome } from "../../data-services";
 import { transactionActions } from "./transaction";
 
 export const getExpenses = () => {
@@ -48,6 +48,44 @@ export const addExpense = (expense) => {
 			addExpenseData.catch(() => 
 				alert('Error adding expense')
 			);
+		}
+	}
+}
+
+export const getIncome = () => {
+	return async (dispatch) => {
+		
+		const incomeData = async () => {
+			const response = await fetchIncome();
+			return response.json();
+		}
+
+		try {
+			const income = await incomeData();
+			dispatch(transactionActions.setIncome(income));
+		} catch {
+			incomeData.catch(() => {
+				alert('error fetching income');
+			});
+		}
+	}
+}
+
+export const updateIncome = (income) => {
+	return async (dispatch) => {
+
+		const incomeData = async () => {
+			const response = await putIncome(income);
+			return response.json();
+		}
+
+		try {
+			await incomeData();
+			dispatch(transactionActions.setIncome(income));
+		} catch {
+			incomeData.catch(() => {
+				alert('error updating income data');
+			});
 		}
 	}
 }
