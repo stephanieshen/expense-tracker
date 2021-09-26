@@ -2,8 +2,12 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styles from './Dashboard.module.scss';
+import { RootStateOrAny, useSelector } from 'react-redux';
+import { formatCurrency } from '../../services';
 
 const Dashboard = () => {
+  const transaction = useSelector((state: RootStateOrAny) => state.transaction);
+
   return (
     <div>
       <div className={styles.income}>
@@ -11,7 +15,10 @@ const Dashboard = () => {
           Income
         </h5>
         <h2 className={styles.amount}>
-          Php 1,200.00
+          Php &nbsp;
+          <span data-testid="income">
+            {formatCurrency(0)}
+          </span>
         </h2>
       </div>
 
@@ -23,7 +30,10 @@ const Dashboard = () => {
                 Expense
               </h5>
               <h2 className={styles.amount}>
-                Php 1,200.00
+                Php &nbsp;
+                <span data-testid="expense-total">
+                  {formatCurrency(transaction.totalExpenses)}
+                </span>
               </h2>
             </div>
           </Col>
@@ -33,7 +43,10 @@ const Dashboard = () => {
                 Balance
               </h5>
               <h2 className={styles.amount}>
-                Php 1,200.00
+                Php &nbsp;
+                <span data-testid="balance">
+                  {formatCurrency(0)}
+                </span>
               </h2>
             </div>
           </Col>

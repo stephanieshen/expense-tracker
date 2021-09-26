@@ -1,4 +1,5 @@
 import { Expense } from "../../../models/expense.model";
+import { formatCurrency } from "../../../services";
 import CategoryIcon from "../../CategoryIcon/CategoryIcon";
 import styles from './ExpenseItem.module.scss';
 interface ExpenseItemProps {
@@ -21,7 +22,7 @@ const ExpenseItem = ({ expense } : ExpenseItemProps) => {
           </p>
         </div>
         <p className={styles.amount}>
-          Php {expense.amount}
+          Php {formatCurrency(expense.amount)}
         </p>
       </div>
     </>
