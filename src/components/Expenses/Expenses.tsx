@@ -1,12 +1,18 @@
 import Skeleton from "react-loading-skeleton";
-import { RootStateOrAny, useSelector } from "react-redux";
+import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { Expense } from "../../models/expense.model";
+import { removeExpense } from "../../store/Transaction/transaction-action";
 import ExpenseItem from "./ExpenseItem/ExpenseItem"
 import styles from './Expenses.module.scss'
 
 const Expenses = () => {
+  const dispatch = useDispatch();
   const transaction = useSelector((state: RootStateOrAny) => state.transaction);
   
+  const onDeleteExpense = (expense: Expense): void => {
+    dispatch(removeExpense(expense));
+  }
+
   return (
     <div>
       <h4>All Expenses</h4>
@@ -22,7 +28,11 @@ const Expenses = () => {
         <>
           {transaction.expenses.length > 0 ? (
             transaction.expenses.map((expense: Expense) => (
-              <ExpenseItem key={expense.id} expense={expense} />
+              <ExpenseItem
+                key={expense.id}
+                expense={expense}
+                deleteExpense={onDeleteExpense}
+              />
             ))
           ) : (
             <h6 className={styles.noData}>

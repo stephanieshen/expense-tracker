@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
@@ -9,15 +9,18 @@ import Col from 'react-bootstrap/Col';
 import { addExpense } from '../../store/Transaction/transaction-action';
 import styles from './Transaction.module.scss';
 
+const formFields = {
+  title: null,
+  category: 'food',
+  amount: 0,
+  date: null
+}
+
 const Transaction = (): ReactElement => {
   const dispatch = useDispatch();
+  const transactionForm = useRef<HTMLFormElement>(null);
   const [validated, setValidated] = useState<boolean>(false);
-  const [formValues, setFormValues] = useState<any>({
-    title: null,
-    category: 'food',
-    amount: 0,
-    date: null
-  });
+  const [formValues, setFormValues] = useState<any>({...formFields});
 
   const isFormValid = (): boolean => {
     const invalidItems = Object.keys(formValues).filter((key: string) => (
@@ -35,6 +38,7 @@ const Transaction = (): ReactElement => {
     }
 
     dispatch(addExpense(formValues));
+    transactionForm?.current?.reset();
   }
 
   const handleChange = (
@@ -50,7 +54,7 @@ const Transaction = (): ReactElement => {
   return (
     <div>
       <h4>Add Expense</h4>
-      <Form validated={validated} noValidate>
+      <Form validated={validated} ref={transactionForm} noValidate>
         <Container className={styles.row}>
           <Row>
             <Col className={styles.col}>

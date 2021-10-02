@@ -5,10 +5,11 @@ import { formatCurrency } from "../../../services";
 import CategoryIcon from "../../CategoryIcon/CategoryIcon";
 import styles from './ExpenseItem.module.scss';
 interface ExpenseItemProps {
-  expense: Expense
+  expense: Expense,
+  deleteExpense: Function
 }
 
-const ExpenseItem = ({ expense } : ExpenseItemProps) => {
+const ExpenseItem = ({ expense, deleteExpense } : ExpenseItemProps) => {
   return (
     <>
       <div data-testid="expense-item" className={styles.expenseItem}>
@@ -27,7 +28,10 @@ const ExpenseItem = ({ expense } : ExpenseItemProps) => {
           Php {formatCurrency(expense.amount)}
         </p>
 
-        <button className={`et-btn ${styles.deleteExpenseBtn}`}>
+        <button
+          className={`et-btn ${styles.deleteExpenseBtn}`}
+          onClick={() => deleteExpense(expense)}
+        >
           <FontAwesomeIcon icon={faTrashAlt} />
         </button>
       </div>

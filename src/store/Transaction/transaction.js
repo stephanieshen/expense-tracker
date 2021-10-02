@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { findIndex } from 'lodash'
 
 const getTotalExpenses = (expenses) => {
 	return expenses.reduce((total, expense) => {
@@ -30,6 +31,13 @@ const transactionSlice = createSlice({
 		},
 		addExpense(state, action) {
 			state.expenses.push(action.payload);
+			state.totalExpenses = getTotalExpenses(state.expenses);
+		},
+		removeExpense(state, action) {
+			const index = findIndex(state.expenses, { 
+				id: action.payload.id 
+			}); 
+			state.expenses.splice(index, 1);
 			state.totalExpenses = getTotalExpenses(state.expenses);
 		}
 	}

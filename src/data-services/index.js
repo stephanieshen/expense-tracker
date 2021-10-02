@@ -19,6 +19,15 @@ export const fetchExpenses = async () => {
   );
 }
 
+export const deleteExpense = async (expenseId) => {
+  return await fetch(
+    endpoint + `expenses/${expenseId}.json`,
+    {
+      method: 'DELETE'
+    }
+  )
+}
+
 export const fetchIncome = async () => {
   return await fetch(
     endpoint + 'income.json',

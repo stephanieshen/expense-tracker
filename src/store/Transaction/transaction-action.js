@@ -1,4 +1,4 @@
-import { fetchExpenses, postExpense, fetchIncome, putIncome } from "../../data-services";
+import { fetchExpenses, postExpense, deleteExpense, fetchIncome, putIncome } from "../../data-services";
 import { transactionActions } from "./transaction";
 
 export const getExpenses = () => {
@@ -48,6 +48,25 @@ export const addExpense = (expense) => {
 			addExpenseData.catch(() => 
 				alert('Error adding expense')
 			);
+		}
+	}
+}
+
+export const removeExpense = (expense) => {
+	return async (dispatch) => {
+		
+		const deleteExpenseData = async () => {
+			const response = await deleteExpense(expense.id);
+			return response.json();
+		}
+
+		try {
+			await deleteExpenseData();
+			dispatch(transactionActions.removeExpense(expense))
+		} catch {
+			deleteExpenseData().catch(() => {
+				alert('error deleting expense')
+			});
 		}
 	}
 }
