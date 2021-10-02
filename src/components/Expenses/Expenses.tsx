@@ -2,6 +2,7 @@ import Skeleton from "react-loading-skeleton";
 import { RootStateOrAny, useSelector } from "react-redux";
 import { Expense } from "../../models/expense.model";
 import ExpenseItem from "./ExpenseItem/ExpenseItem"
+import styles from './Expenses.module.scss'
 
 const Expenses = () => {
   const transaction = useSelector((state: RootStateOrAny) => state.transaction);
@@ -19,9 +20,15 @@ const Expenses = () => {
         </div>
       ) : (
         <>
-          {transaction.expenses.map((expense: Expense) => (
-            <ExpenseItem key={expense.id} expense={expense} />
-          ))}
+          {transaction.expenses.length > 0 ? (
+            transaction.expenses.map((expense: Expense) => (
+              <ExpenseItem key={expense.id} expense={expense} />
+            ))
+          ) : (
+            <h6 className={styles.noData}>
+              Nothing to display
+            </h6>
+          )}
         </>
       )}
     </div>

@@ -11,10 +11,10 @@ export const getExpenses = () => {
 
 		try {
 			let expenses = await getAllExpensesData();
-			expenses = Object.keys(expenses).map(key => ({
+			expenses = expenses ? Object.keys(expenses).map(key => ({
 				id: key,
 				...expenses[key]
-			}));
+			})) : []
 
 			dispatch(transactionActions.setExpenses(expenses));
 			dispatch(transactionActions.setIsLoading(false));
