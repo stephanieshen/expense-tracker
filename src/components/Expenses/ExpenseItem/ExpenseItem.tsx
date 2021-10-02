@@ -1,3 +1,5 @@
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Expense } from "../../../models/expense.model";
 import { formatCurrency } from "../../../services";
 import CategoryIcon from "../../CategoryIcon/CategoryIcon";
@@ -24,6 +26,10 @@ const ExpenseItem = ({ expense } : ExpenseItemProps) => {
         <p className={styles.amount}>
           Php {formatCurrency(expense.amount)}
         </p>
+
+        <button className={`et-btn ${styles.deleteExpenseBtn}`}>
+          <FontAwesomeIcon icon={faTrashAlt} />
+        </button>
       </div>
     </>
   )
