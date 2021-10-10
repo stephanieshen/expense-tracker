@@ -1,4 +1,4 @@
-https://expense-tracker-app-iota.vercel.app/
+**Project preview:** https://expense-tracker-app-iota.vercel.app/
 
 # Getting Started with Create React App
 
